@@ -12,6 +12,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { db } from "./firebase";
+import styled from "@emotion/styled";
 
 function App() {
   const [todos, setTodos] = React.useState([]);
@@ -38,7 +39,7 @@ function App() {
     await deleteDoc(doc(db, "todos", id));
   };
   return (
-    <div className="App">
+    <Container>
       <div>
         <Title />
       </div>
@@ -56,7 +57,17 @@ function App() {
           />
         ))}
       </div>
-    </div>
+    </Container>
   );
 }
 export default App;
+
+const Container = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #202224;
+  overflow: hidden;
+`;
